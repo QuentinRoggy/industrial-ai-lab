@@ -57,3 +57,17 @@ A change is complete only when:
 - migrations and seed data remain reproducible;
 - relevant documentation is updated;
 - typecheck, lint, tests, and production build pass.
+
+## Agent skills
+
+### Issue tracker
+
+Issues and specs live in GitHub Issues, managed with the `gh` CLI. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Default vocabulary: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, `wontfix`. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Multi-context: `CONTEXT-MAP.md` at the root, one `CONTEXT.md` per module under `app/modules/`, ADRs in `docs/decisions/`. See `docs/agents/domain.md`.
