@@ -7,6 +7,27 @@
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
 
+export class OutboxMessageSchema extends BaseModel {
+  static $columns = ['id', 'name', 'occurredAt', 'payload', 'position', 'publishedAt', 'recordedAt', 'version'] as const
+  $columns = OutboxMessageSchema.$columns
+  @column({ isPrimary: true })
+  declare id: string
+  @column()
+  declare name: string
+  @column.dateTime()
+  declare occurredAt: DateTime
+  @column()
+  declare payload: any
+  @column()
+  declare position: bigint | number
+  @column.dateTime()
+  declare publishedAt: DateTime | null
+  @column.dateTime()
+  declare recordedAt: DateTime
+  @column()
+  declare version: number
+}
+
 export class UserSchema extends BaseModel {
   static $columns = ['createdAt', 'email', 'fullName', 'id', 'password', 'updatedAt'] as const
   $columns = UserSchema.$columns
