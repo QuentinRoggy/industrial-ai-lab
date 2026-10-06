@@ -7,6 +7,17 @@
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
 
+export class OrganizationSchema extends BaseModel {
+  static $columns = ['createdAt', 'id', 'name'] as const
+  $columns = OrganizationSchema.$columns
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column({ isPrimary: true })
+  declare id: string
+  @column()
+  declare name: string
+}
+
 export class OutboxMessageSchema extends BaseModel {
   static $columns = ['id', 'name', 'occurredAt', 'payload', 'position', 'publishedAt', 'recordedAt', 'version'] as const
   $columns = OutboxMessageSchema.$columns
@@ -26,6 +37,30 @@ export class OutboxMessageSchema extends BaseModel {
   declare recordedAt: DateTime
   @column()
   declare version: number
+}
+
+export class SiteSchema extends BaseModel {
+  static $columns = ['code', 'createdAt', 'id', 'name', 'organizationId'] as const
+  $columns = SiteSchema.$columns
+  @column()
+  declare code: string
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column({ isPrimary: true })
+  declare id: string
+  @column()
+  declare name: string
+  @column()
+  declare organizationId: string
+}
+
+export class UserRoleSchema extends BaseModel {
+  static $columns = ['role', 'userId'] as const
+  $columns = UserRoleSchema.$columns
+  @column()
+  declare role: string
+  @column({ isPrimary: true })
+  declare userId: number
 }
 
 export class UserSchema extends BaseModel {

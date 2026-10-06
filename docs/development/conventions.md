@@ -12,6 +12,8 @@ Code, identifiers, commits, and technical documentation are written in English. 
 - Application services implement use cases and transaction boundaries.
 - Domain objects protect business invariants.
 - Repositories and provider adapters belong to infrastructure.
+- Each module wires its application services in a `<module>Module()` factory at the module root. Controllers, seeders, and tests obtain services from it.
+- Application services receive the acting `Actor` and check its permission through `iam` before any write. Roles map to permissions in `iam`.
 - React pages render server-provided props and submit intents; they do not reproduce domain rules.
 
 ## Commands and queries

@@ -8,7 +8,7 @@ Identifies people and decides what they may do.
 A person who signs in to the Lab.
 
 **Role**:
-A named set of permissions matching a demo persona, such as planner, buyer, quality engineer, or operator. Roles apply to the whole organization.
+A named set of permissions matching a demo persona: planner, buyer, quality engineer, operator, warehouse operator, sales administrator, methods manager, or IT administrator. Roles apply to the whole organization, and a user holds at least one.
 _Avoid_: Profile, group
 
 **Permission**:
