@@ -26,6 +26,7 @@ Name use cases explicitly, for example `ReleaseManufacturingOrder`, `ReceivePurc
 - Use decimal database types for quantities and money; never binary floating point.
 - Preserve immutable ledgers and versioned master data.
 - Use transactions for multi-table business operations.
+- Keep domain objects free of Lucid; repositories map them to module-private Lucid models, and queries return plain read models. See ADR 0004.
 
 ## Tests
 
