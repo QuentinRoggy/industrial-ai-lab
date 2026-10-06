@@ -9,14 +9,17 @@
 
 ## Phase 1 — Industrial vertical slice
 
-Implement one complete deterministic flow:
+Implement one complete deterministic flow around a reference product, a two-level valve assembly, delivered as slices merged one at a time:
 
-1. organisation and site;
-2. items, BOM, routing, supplier, and customer demand;
-3. purchase receipt and stock movements;
-4. manufacturing order release, consumption, production, and scrap;
-5. quality inspection and non-conformity;
-6. traceability timeline.
+1. foundation: shared primitives, organisation and site, static roles and permissions;
+2. master data: items, work centres, versioned BOMs and routings, suppliers, and customers;
+3. inventory: locations, lots, immutable stock movements, balances, and stock status;
+4. purchasing: purchase orders and partial receipts;
+5. manufacturing: order release, operation execution, material issue, output, and production scrap;
+6. quality: receipt and final inspections, non-conformities, dispositions, and corrective actions;
+7. sales: customer demand and shipments;
+8. planning: deterministic MRP runs and human firming of planned orders;
+9. traceability: upstream and downstream lot timeline, deterministic seed, and an end-to-end test of the whole flow.
 
 ## Phase 2 — Simulation
 
@@ -36,6 +39,6 @@ Implement one complete deterministic flow:
 
 ## Phase 4 — POC portfolio
 
-Candidate experiments include late-order risk, document extraction and reconciliation, non-conformity similarity, suspicious stock movements, traceability explanation, process drift, constrained rescheduling, and visual inspection.
+Candidate experiments include late-order risk, planning compared with the deterministic MRP baseline, document extraction and reconciliation, non-conformity similarity, suspicious stock movements, traceability explanation, process drift, constrained rescheduling, and visual inspection.
 
 The order of POCs is deliberately not fixed. Choose experiments that improve coverage across industrial functions and AI techniques while reusing the common evaluation platform.

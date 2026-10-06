@@ -8,9 +8,10 @@ The folders under `app/modules/` are bounded contexts. Create `domain`, `applica
 | `organization`  | companies, sites, calendars                                         | production execution                           |
 | `catalog`       | items, units, classifications                                       | BOMs and routings                              |
 | `methods`       | versioned BOMs, routings, work centres                              | live manufacturing orders                      |
-| `inventory`     | locations, lots, serials, movements, reservations                   | purchasing contracts                           |
+| `inventory`     | locations, lots, serials, movements, stock status, reservations     | purchasing contracts                           |
 | `purchasing`    | suppliers, purchase orders, expected and actual receipts            | inventory balances                             |
-| `sales`         | customers and simplified demand                                     | invoicing and CRM                              |
+| `sales`         | customers, simplified demand, shipments                             | invoicing and CRM                              |
+| `planning`      | MRP runs, requirements, planned orders                              | firmed purchase and manufacturing orders       |
 | `manufacturing` | manufacturing orders, operations, consumption, output, scrap        | master definitions                             |
 | `quality`       | inspections, defects, non-conformities, corrective actions          | document binary storage                        |
 | `documents`     | metadata, versions, links, storage references                       | interpreting documents as trusted instructions |

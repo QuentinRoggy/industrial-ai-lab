@@ -7,7 +7,7 @@ This file is the entry point for coding agents. Read it before changing the proj
 1. `docs/product/scope.md`
 2. `docs/architecture/overview.md`
 3. `docs/architecture/modules.md`
-4. `docs/domain/model.md`
+4. `CONTEXT-MAP.md` and the `CONTEXT.md` of each module involved
 5. `docs/architecture/ai-and-experiments.md`
 6. `docs/development/conventions.md`
 7. Relevant ADRs in `docs/decisions/`

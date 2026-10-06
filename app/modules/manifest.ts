@@ -6,6 +6,7 @@ export const moduleNames = [
   'inventory',
   'purchasing',
   'sales',
+  'planning',
   'manufacturing',
   'quality',
   'documents',

@@ -2,7 +2,7 @@
 
 ## Language and naming
 
-Code, identifiers, commits, and technical documentation are written in English. User-facing copy may be localised later. Use industrial vocabulary consistently with `docs/domain/model.md`.
+Code, identifiers, commits, and technical documentation are written in English. User-facing copy may be localised later. Use industrial vocabulary consistently with `CONTEXT-MAP.md` and the module `CONTEXT.md` glossaries.
 
 ## Application structure
 
@@ -23,7 +23,7 @@ Name use cases explicitly, for example `ReleaseManufacturingOrder`, `ReceivePurc
 - Use PostgreSQL migrations through Lucid.
 - Prefer UUID identifiers for new domain aggregates.
 - Store timestamps in UTC.
-- Use decimal database types for quantities and money; never binary floating point.
+- Use decimal database types for quantities and money; never binary floating point. Quantities use `numeric(18,6)`, unit prices `numeric(18,4)`, and currencies an ISO 4217 code.
 - Preserve immutable ledgers and versioned master data.
 - Use transactions for multi-table business operations.
 - Keep domain objects free of Lucid; repositories map them to module-private Lucid models, and queries return plain read models. See ADR 0004.
