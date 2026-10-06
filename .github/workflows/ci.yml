@@ -20,11 +20,7 @@ jobs:
       APP_KEY: test-only-key-not-for-production
       APP_URL: http://localhost:3333
       SESSION_DRIVER: memory
-      DB_HOST: 127.0.0.1
-      DB_PORT: 5432
-      DB_USER: industrial_ai_lab
-      DB_PASSWORD: industrial_ai_lab
-      DB_DATABASE: industrial_ai_lab_test
+      DB_URL: postgres://industrial_ai_lab:industrial_ai_lab@127.0.0.1:5432/industrial_ai_lab_test
     services:
       postgres:
         image: postgres:17-alpine
