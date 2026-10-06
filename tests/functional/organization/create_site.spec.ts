@@ -1,19 +1,11 @@
-import User from '#models/user'
 import { AccessDenied } from '#modules/iam/application/access_control'
-import { iamModule } from '#modules/iam/iam_module'
-import type { Role } from '#modules/iam/application/roles'
 import { organizationModule } from '#modules/organization/organization_module'
 import { FixedClock } from '#shared/domain/clock'
 import testUtils from '@adonisjs/core/services/test_utils'
 import { test } from '@japa/runner'
+import { userWithRoles } from '#tests/helpers/users'
 
 const clock = new FixedClock(new Date('2026-03-02T08:00:00.000Z'))
-
-async function userWithRoles(email: string, roles: Role[]) {
-  const user = await User.create({ email, password: 'secret-password' })
-  await iamModule().seedRoles(user.id, roles)
-  return { userId: user.id }
-}
 
 const itAdministrator = () => userWithRoles('admin@lab.test', ['it_administrator'])
 

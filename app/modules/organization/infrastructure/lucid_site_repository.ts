@@ -4,9 +4,8 @@ import { duplicateSiteCode, type SiteCode } from '#modules/organization/domain/s
 import { SiteRecord } from '#modules/organization/infrastructure/site_record'
 import type { Transaction } from '#shared/application/unit_of_work'
 import { lucidClient } from '#shared/infrastructure/lucid_unit_of_work'
+import { isUniqueViolation } from '#shared/infrastructure/unique_violation'
 import { DateTime } from 'luxon'
-
-const uniqueViolation = '23505'
 
 export class LucidSiteRepository implements SiteRepository {
   async existsWithCode(transaction: Transaction, code: SiteCode): Promise<boolean> {
@@ -21,7 +20,7 @@ export class LucidSiteRepository implements SiteRepository {
     try {
       await this.insert(transaction, site, createdAt)
     } catch (error) {
-      if (error instanceof Error && 'code' in error && error.code === uniqueViolation) {
+      if (isUniqueViolation(error)) {
         throw duplicateSiteCode(site.code)
       }
       throw error

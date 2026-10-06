@@ -7,6 +7,33 @@
 import { BaseModel, column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
 
+export class ItemSchema extends BaseModel {
+  static $columns = ['code', 'createdAt', 'description', 'finalInspection', 'id', 'leadTimeDays', 'lotTracked', 'manufactured', 'purchased', 'receiptInspection', 'stockUnit'] as const
+  $columns = ItemSchema.$columns
+  @column()
+  declare code: string
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column()
+  declare description: string
+  @column()
+  declare finalInspection: boolean
+  @column({ isPrimary: true })
+  declare id: string
+  @column()
+  declare leadTimeDays: number
+  @column()
+  declare lotTracked: boolean
+  @column()
+  declare manufactured: boolean
+  @column()
+  declare purchased: boolean
+  @column()
+  declare receiptInspection: boolean
+  @column()
+  declare stockUnit: string
+}
+
 export class OrganizationSchema extends BaseModel {
   static $columns = ['createdAt', 'id', 'name'] as const
   $columns = OrganizationSchema.$columns
