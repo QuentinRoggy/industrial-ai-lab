@@ -10,7 +10,8 @@ The definition of done requires every use case to consider permissions, and ADR 
 
 - `iam` owns a static matrix from roles to permissions, in code. A permission names one command or query, for example `organization.create_site`.
 - A user holds one or more roles; roles apply to the whole organization.
-- Every application service receives the acting `Actor` and asks `iam` whether the actor holds the permission before doing any work. Controllers, seeders, and AI tools reach use cases only through these services, so the check cannot be skipped.
+- Every command receives the acting `Actor` and asks `iam` whether the actor holds the permission before doing any work.
+- Queries require an authenticated user. Only sensitive queries carry their own permission; reference and operational data are readable by every role, as in a shared ERP. Controllers, seeders, and AI tools reach use cases only through these services, so the check cannot be skipped.
 - Granting roles outside a use case is reserved for seeding the first administrator and for tests.
 
 ## Alternatives considered
@@ -21,4 +22,5 @@ The definition of done requires every use case to consider permissions, and ADR 
 ## Consequences
 
 - Permissions are reviewed and changed through code review.
+- This refines the spec's "every command and query checks permissions": queries are protected by authentication, and by a permission only when sensitive.
 - Per-site roles require a new decision when a second site is used.
