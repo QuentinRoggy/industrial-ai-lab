@@ -32,6 +32,7 @@ Name use cases explicitly, for example `ReleaseManufacturingOrder`, `ReceivePurc
 
 - Unit tests cover domain invariants and deterministic algorithms.
 - Functional tests cover routes, permissions, transactions, and Inertia responses.
+- Database-backed tests live in the functional suite and isolate each test with `testUtils.db().withGlobalTransaction()`. Locally, point `DB_URL` at a disposable database in `.env.test.local`: the functional suite rolls back every migration when it ends. Under the global transaction, a unit of work opens a savepoint, so tests prove atomicity but not the top-level commit.
 - Scenario tests prove deterministic generation from a seed.
 - Experiment tests validate schemas, tool permissions, evidence retention, and metrics.
 
