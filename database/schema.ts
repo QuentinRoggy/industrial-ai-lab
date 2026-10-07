@@ -66,6 +66,42 @@ export class OutboxMessageSchema extends BaseModel {
   declare version: number
 }
 
+export class RoutingOperationSchema extends BaseModel {
+  static $columns = ['routingVersionId', 'runMinutesPerUnit', 'sequence', 'setupMinutes', 'workCentreId'] as const
+  $columns = RoutingOperationSchema.$columns
+  @column({ isPrimary: true })
+  declare routingVersionId: string
+  @column()
+  declare runMinutesPerUnit: string
+  @column()
+  declare sequence: number
+  @column()
+  declare setupMinutes: string
+  @column()
+  declare workCentreId: string
+}
+
+export class RoutingVersionSchema extends BaseModel {
+  static $columns = ['createdAt', 'effectiveFrom', 'id', 'itemId', 'number', 'obsoleteFrom', 'status', 'version'] as const
+  $columns = RoutingVersionSchema.$columns
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column.date()
+  declare effectiveFrom: DateTime | null
+  @column({ isPrimary: true })
+  declare id: string
+  @column()
+  declare itemId: string
+  @column()
+  declare number: number
+  @column.date()
+  declare obsoleteFrom: DateTime | null
+  @column()
+  declare status: string
+  @column()
+  declare version: number
+}
+
 export class SiteSchema extends BaseModel {
   static $columns = ['code', 'createdAt', 'id', 'name', 'organizationId'] as const
   $columns = SiteSchema.$columns
@@ -105,4 +141,17 @@ export class UserSchema extends BaseModel {
   declare password: string
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null
+}
+
+export class WorkCentreSchema extends BaseModel {
+  static $columns = ['code', 'createdAt', 'id', 'name'] as const
+  $columns = WorkCentreSchema.$columns
+  @column()
+  declare code: string
+  @column.dateTime({ autoCreate: true })
+  declare createdAt: DateTime
+  @column({ isPrimary: true })
+  declare id: string
+  @column()
+  declare name: string
 }

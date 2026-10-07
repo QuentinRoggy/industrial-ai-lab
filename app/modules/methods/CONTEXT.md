@@ -22,5 +22,8 @@ _Avoid_: Workstation, machine, resource
 **Definition Version**:
 One version of a bill of materials or routing. It is draft, approved, or obsolete; an approved version never changes.
 
+**Obsolete Version**:
+A version that stopped applying on a given date. Before that date it still answers as it did; on and after it, no version of the definition applies until a new one is approved, and the version it replaced never comes back.
+
 **Effective Date**:
-The date from which an approved version applies. At any date, at most one approved version of a definition is effective for an item.
+The date from which an approved version applies. At any date, at most one approved version of a definition is effective for an item: a newly approved version takes over from its effective date, which is never in the past and always after the latest approved version's, so history is never rewritten.

@@ -16,9 +16,9 @@ Read-heavy screens, traceability timelines, and experiment datasets, on the othe
 
 - Aggregates, entities, and value objects are plain TypeScript classes in `app/modules/<module>/domain/`. They do not import Lucid, the database service, or any AdonisJS package.
 - Each aggregate that is persisted has a repository interface owned by the module, next to the domain code.
-- Repositories are implemented in `app/modules/<module>/infrastructure/` using Lucid models and explicit mappers between rows and domain objects.
+- Repositories are implemented in `app/modules/<module>/infrastructure/` with explicit mappers between rows and domain objects. They use Lucid models, or the Lucid query builder where a model does not fit, such as composite keys or calendar `date` columns.
 - Lucid models belonging to a module live in that module's `infrastructure/` folder, not in `app/models/`. They are private to the module and are never returned by application services.
-- Mutable aggregates carry a version column and repositories use optimistic concurrency checks on update.
+- Mutable aggregates carry a version column and repositories use optimistic concurrency checks on update. A rule spanning several rows of one aggregate type, such as non-overlapping definition versions, locks those rows for the rest of the transaction.
 
 ### Transactions
 

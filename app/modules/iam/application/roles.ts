@@ -16,7 +16,15 @@ export function isRole(value: string): value is Role {
 }
 
 export type Permission =
-  'iam.assign_roles' | 'organization.set_up' | 'organization.create_site' | 'catalog.create_item'
+  | 'iam.assign_roles'
+  | 'organization.set_up'
+  | 'organization.create_site'
+  | 'catalog.create_item'
+  | 'methods.create_work_centre'
+  | 'methods.draft_routing'
+  | 'methods.revise_routing'
+  | 'methods.approve_routing'
+  | 'methods.make_routing_obsolete'
 
 /**
  * Static role matrix. Roles apply to the whole organization; each module adds
@@ -29,6 +37,13 @@ export const rolePermissions: Record<Role, readonly Permission[]> = {
   operator: [],
   warehouse_operator: [],
   sales_administrator: [],
-  methods_manager: ['catalog.create_item'],
+  methods_manager: [
+    'catalog.create_item',
+    'methods.create_work_centre',
+    'methods.draft_routing',
+    'methods.revise_routing',
+    'methods.approve_routing',
+    'methods.make_routing_obsolete',
+  ],
   it_administrator: ['iam.assign_roles', 'organization.set_up', 'organization.create_site'],
 }
